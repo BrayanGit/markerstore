@@ -9,7 +9,8 @@ const { verificarToken } = require('./middleware/auth');
 const bodyParser = require('body-parser');
 
 const app = express();
-//const port = process.env.PORT;
+const port = process.env.PORT;
+
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json());
@@ -135,10 +136,10 @@ app.get("/usuarios", verificarToken, async (req, res) => {
     res.status(error.code || 500).send(error.message);
   }
 });
-//app.listen(port, () => {
-//  console.log(`Servidor levanatdo en el puerto ${port}`);
-//});
-app.listen(3000, () => console.log("SERVER ON"));
+app.listen(port, () => {
+  console.log(`Servidor levanatdo en el puerto ${port}`);
+});
+//app.listen(3000, () => console.log("SERVER ON"));
 
 module.exports = app;
 
